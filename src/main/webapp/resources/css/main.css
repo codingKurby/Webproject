@@ -1,0 +1,167 @@
+@charset "UTF-8";
+
+
+* {
+	font-family: 'Jua', sans-serif;
+font-family: 'Nanum Myeongjo', serif;
+font-family: 'Poor Story', cursive;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.hello{
+
+	
+}
+
+/* 화면 전체 렙 */
+.wrapper {
+	width: 100%;
+}
+/* content 랩 */
+.wrap {
+	width: 800px;
+	margin: auto;
+}
+/* 홈페이지 기능 네비 */
+.top_gnb_area {
+	width: 100%;
+	height: 50px;
+	background-color: #f0f0f1;
+	position: relative;
+}
+
+.top_gnb_area .list {
+	position: absolute;
+	top: 0px;
+	right: 0;
+}
+
+.top_gnb_area .list li {
+	list-style: none;
+	float: left;
+	padding: 13px 15px 0 10px;
+	font-weight: 900;
+	cursor: pointer;
+}
+
+/* 로고, 검색, 로그인 */
+.top_area {
+	padding-top: 60px;
+	padding-left: 300px;
+	width: 100%;
+	height: 150px;
+	/* background-color: #f7f0b9; */
+}
+/* 로고 영역 */
+.logo_area {
+	width: 25%;
+	height: 100%;
+	
+}
+
+.logo_area img {
+	width: 100%;
+	height: 100%;
+	
+}
+/* 검색 박스 영역 */
+.search_area {
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+
+.search_wrap {
+	width: 100%;
+	height: 100%;
+}
+
+#searchForm {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.search_input {
+	display: flex;
+	height: 30%;
+	width: 80%;
+}
+
+.search_input select {
+	width: 35%;
+	text-align: center;
+	font-size: 12px;
+}
+
+.search_input input {
+	margin-left: 10px;
+	width: 40%;
+	font-size: 18px;
+	padding-left: 2%;
+}
+
+.search_btn {
+	margin-left: 10px;
+	width: 15%;
+	border-radius: 14px;
+	font-size: 17px;
+	font-weight: 600;
+}
+
+.search_btn img {
+	height: 50%;
+	width: 50%;
+}
+
+/* 로그인 버튼 영역 */
+.login_area {
+	width: 25%;
+	height: 100%;
+	display: inline-block;
+	text-align: center;
+	position: relative;
+}
+
+.login_button {
+	height: 45%;
+	background-color: #faf7c0;
+	margin-top: 0px;
+	line-height: 77px;
+	font-size: 40px;
+	font-weight: 900;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.login_area>span {
+	margin-top: 15px;
+	font-weight: 500;
+	font-size: 25px;
+	display: inline-block;
+}
+
+.login_button {
+	height: 50%;
+	background-color: #faf7c0;
+	margin-top: 0px;
+
+	
+}
+
+/* 홈페이지 메인 제품 목록  */
+.content_area {
+	width: 100%;
+	min-height: 1000px;
+}
+
+/* float 속성 해제 */
+.clearfix {
+	clear: both;
+}

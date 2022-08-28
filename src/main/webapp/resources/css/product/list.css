@@ -1,0 +1,324 @@
+@charset "UTF-8";
+*{
+	font-family: 'Jua', sans-serif;
+font-family: 'Nanum Myeongjo', serif;
+font-family: 'Poor Story', cursive;
+}
+
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* 화면 전체 렙 */
+.wrapper{
+	width: 100%;	
+}
+
+/* content 랩 */
+.wrap{
+	width : 800px;
+	margin: auto;
+}
+
+/* 홈페이지 기능 네비 */ 
+.top_gnb_area{
+	width: 100%;
+    height: 50px;
+    background-color: #f0f0f1;
+    position:relative;
+}
+.top_gnb_area .list{
+    position: absolute;
+    top: 0px;
+    right: 0;
+}
+.top_gnb_area .list li{
+    list-style: none;    
+    float : left;
+    padding: 13px 15px 0 10px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.hello{
+	padding-left: 0px;
+	padding-top: 50px;
+	text-align: center;
+	
+}
+/* 페이지 제목 */
+.subject{
+	width: 100%;
+    height: 120px;
+    background-color: #8EC0E4;
+	text-align: right;
+	position: relative;
+}
+
+/* 로고 영역 */
+.logo_area{
+    width: auto;
+    height: 100%;
+    position: absolute;
+    margin-left: 20px;
+}
+.logo_area img{
+    width: 133px;
+    height: 133px;
+    padding-top: 30px;
+}
+
+.login_area{
+	padding-left: 600px;
+	text-align: center;
+	
+}
+.subject_name{
+	width: 100%;
+	text-align: right;
+	position: absolute;
+	bottom: 0px;
+}
+.subject_name span{
+    font-size: 60px;
+    font-weight: 900;
+    color: white;
+    margin-right: 50px;
+}
+.subject_name a{
+	text-decoration: none;
+}
+
+
+/* 홈페이지 메인 제품 목록  */
+.content_area{
+	width: 100%;
+    background-color: #97ef97;
+    min-height: 1000px;
+}
+
+/* float 속성 해제 */
+.clearfix{
+	clear: both;
+}
+
+
+a {
+	text-decoration: none;
+}
+
+table {
+	border-collapse: collapse;
+	width: 1000px;
+	margin-top: 20px;
+	text-align: center;
+	
+}
+
+td, th {
+	height: 50px;
+	
+
+}
+
+tr{
+	text-align: center;
+}
+
+th {
+	font-size: 17px;
+}
+
+thead {
+	font-weight: 700;
+}
+
+.table_wrap {
+	margin: 100px 0 0 100px;
+}
+
+.bno_width {
+	width: 12%;
+}
+
+.writer_width {
+	width: 20%;
+}
+
+.regdate_width {
+	width: 15%;
+}
+
+.updatedate_width {
+	width: 15%;
+}
+
+.top_btn {
+	font-size: 20px;
+	padding: 6px 12px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	font-weight: 600;
+}
+
+.pageInfo {
+	list-style: none;
+	display: inline-block;
+	margin: 30px 0 0 0px;
+}
+
+.pageInfo li {
+	float: left;
+	font-size: 20px;
+	margin-left: 50px;
+	padding: 0px;
+	font-weight: 400;
+}
+
+a:link {
+	color: black;
+	text-decoration: none;
+}
+
+a:visited {
+	color: black;
+	text-decoration: none;
+}
+
+/* a:hover {
+	color: black;
+	text-decoration: underline;
+} */
+
+.active {
+	background-color: #cdd5ec;
+}
+
+.search_area {
+	display: inline-block;
+	margin-top: 30px;
+	margin-left: 200px;
+}
+
+.search_area input {
+	height: 20px;
+	width: 150px;
+	
+}
+
+.search_area button {
+	width: 100px;
+	height: 30px;
+	float: right;	
+	
+}
+
+.serach_area select {
+	height: 35px;
+	
+}
+/* 상품 표 */
+.list_search_result {
+	width: 90%;
+	margin: auto;
+}
+
+.type_list {
+	width: 100%;
+	border-bottom: 1px solid #e7e7e7;
+	border-collapse: collapse;
+}
+
+.type_list tr {
+	height: 100px;
+	border-bottom: 1px solid #e7e7e7;
+}
+
+.detail div {
+	margin-bottom: 5px;
+}
+
+.category {
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.title {
+	font-size: 20px;
+	color: #3a60df;
+	font-weight: 700;
+}
+
+.info {
+	text-align: center;
+}
+/* 상품 이미지 관련 */
+.image_wrap {
+	width: 150%;
+	height: 100%;
+}
+
+.image_wrap img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+.move {
+	font-size: 20px;
+	color: #3a60df;
+	font-weight: 700;
+}
+td.detail{
+	width: 2000px;
+	text-align: center;
+	padding-left:100px;
+
+}
+
+td.price{
+	width: 1000px;
+	text-align: center;
+	padding-left:100px;
+
+}
+
+td.image{
+	width: 1000px;
+	text-align: center;
+
+}
+/* 로그인 버튼 영역 */
+.login_area {
+	width: 25%;
+	height: 100%;
+	display: inline-block;
+	text-align: center;
+}
+
+.login_button {
+	height: 45%;
+	background-color: #faf7c0;
+	margin-top: 0px;
+	line-height: 60px;
+	font-size: 30px;
+	font-weight: 900;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.login_area>span {
+	margin-top: 15px;
+	font-weight: 500;
+	font-size: 25px;
+	display: inline-block;
+}
+
+.login_button {
+	height: 50%;
+	background-color: #faf7c0;
+	margin-top: 0px;
+
+	
+}

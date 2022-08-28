@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+	<typeAliases>
+		<typeAlias type="com.spring.bread.model.MemberVo"
+			alias="MemberVo" />
+		<typeAlias type="com.spring.bread.model.ProductVo"
+			alias="ProductVo" />
+		<typeAlias type="com.spring.bread.model.AttachImageVo"
+			alias="AttachImageVo" />
+		<typeAlias type="com.spring.bread.dto.CartDTO"
+			alias="CartDTO" />
+	</typeAliases>
+
+
+	<mappers>
+		<mapper resource="/sqlmap/mapper/bread-mapper.xml" />
+		<mapper resource="/sqlmap/mapper/attach-mapper.xml" />
+		<mapper resource="/sqlmap/mapper/cart-mapper.xml" />
+		<mapper resource="/sqlmap/mapper/member-mapper.xml" />
+	</mappers>
+
+</configuration> 

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.bread.mapper.CartMapper">
+
+	<!-- 장바구니 CRUD 기능 수행 SQL문 작성 -->
+	<!-- namespace값 mapper 인터페이스 이름과 맞춰줌 -->
+
+	<!-- 카트 목록 (장바구니 테이블 여러 개 ROW 가져오기) -->
+	<select id="getCart" resultType="CartDTO"> <!-- 환경파일(mybatis-config.xml)에 alias 별칭 설정 -->
+		select a.cartId, a.memberId, a.productId, a.productCount,
+		b.productName,
+		b.productPrice
+		from cart a left outer join product b on
+		a.productId =
+		b.productId
+		where memberId = #{memberId}
+	</select>
+
+	<!-- 카트 확인 (장바구니 테이블 한 개의 ROW 가져오기) -->
+	<select id="checkCart" resultType="CartDTO">
+		select * from cart
+		where
+		memberId = #{memberId} and productId = #{productId}
+	</select>
+
+	<!-- 카트 추가 -->
+	<insert id="addCart" parameterType="CartDTO">
+		insert into cart(memberId,
+		productId, productCount)
+		values(#{memberId}, #{productId}, 1)
+	</insert>
+
+	<!-- 카트 삭제 -->
+	<delete id="deleteCart">
+		delete from cart where
+		cartId = #{cartId}
+	</delete>
+
+	<!-- 카트 수량 수정 -->
+	<update id="modifyCount" parameterType="CartDTO">
+		update cart set productCount=#{productCount} where
+		cartId = #{cartId}
+	</update>
+
+	<delete id="buyCart">
+		delete from cart where
+		cartId = #{cartId}
+	</delete>
+
+</mapper>

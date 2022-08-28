@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.bread.mapper.MemberMapper">
+
+	
+	<!-- Member -->
+
+	<insert id="memberJoin">
+		<![CDATA[
+			insert member(memberId, memberPw, memberName, memberPhone1, memberPhone2, memberPhone3, memberMail, memberAddr1, memberAddr2, memberAddr3) 
+			values(#{memberId}, #{memberPw}, #{memberName}, #{memberPhone1}, #{memberPhone2}, #{memberPhone3}, #{memberMail}, #{memberAddr1}, #{memberAddr2}, #{memberAddr3})
+		]]>
+	</insert>
+
+	<select id="memberList" resultType="MemberVo">
+		<![CDATA[
+			select memberId, memberName from member order by memberId desc
+		]]>
+	</select>
+
+	<select id="memberDetail" parameterType="MemberVo"
+		resultType="MemberVo">
+		<![CDATA[
+			select memberId, memberPw, memberName, memberPhone1, memberPhone2, memberPhone3, memberMail, memberAddr1, memberAddr2, memberAddr3
+			from member where memberId=#{memberId}
+		]]>
+	</select>
+
+	<update id="memberModify">
+ 		<![CDATA[
+			UPDATE MEMBER
+    	    SET 
+        	memberName = #{memberName}, 
+        	memberPhone1 = #{memberPhone1}, memberPhone2 = #{memberPhone2}, memberPhone3 = #{memberPhone3},
+        	memberMail = #{memberMail},
+        	memberAddr1 = #{memberAddr1}, memberAddr2 = #{memberAddr2}, memberAddr3 = #{memberAddr3}
+        	WHERE memberId = #{memberId}
+		]]>
+	</update>
+	
+	<update id="memberChangePw" parameterType="hashMap">
+		<![CDATA[
+			UPDATE MEMBER
+    	    SET 
+        	memberPw = #{memberNewPw} 
+        	WHERE memberId = #{memberId} and memberPw = #{memberPw}
+		]]>
+	</update>
+
+	<select id="memberLogin" parameterType="hashMap"
+		resultType="MemberVo">
+		<![CDATA[
+			select memberId, memberPw, memberName, adminCk from member where memberId=#{memberId} and memberPw=#{memberPw}
+		]]>
+	</select>
+
+	<select id="memberPwCheck" resultType="hashMap">
+		<![CDATA[
+			select memberPw from member where memberId=#{memberId}
+		]]>
+	</select>
+
+	<update id="memberDelete" parameterType="MemberVo">
+		<![CDATA[
+        	UPDATE MEMBER
+        	SET
+        	memberPw = '-admin', memberName = '-admin', memberPhone1 = '-1', memberPhone2 = '-1', memberPhone3 = '-1',
+        	memberMail = '-admin', memberAddr1 = '-admin', memberAddr2 = '-admin', memberAddr3 = '-admin'
+        	WHERE memberId = #{memberId} and memberPw = #{memberPw}
+        ]]>
+	</update>
+	
+	<!-- 탈퇴회원 데이터 관리 -->
+	<insert id="memberDeleted">
+		<![CDATA[
+			insert member_deleted(memberId) 
+			values(#{memberId})
+		]]>
+	</insert>
+
+	<!-- 아이디 중복검사 -->
+	<select id="memberIdCheck" resultType="int">
+		<![CDATA[
+			select count(*) from member where memberId = #{memberId}
+		]]>
+	</select>
+
+</mapper>     

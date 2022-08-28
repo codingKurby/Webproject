@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.bread.mapper.BreadMapper">
+
+	<!-- Product -->
+	<!-- Product -->
+	<!-- Product -->
+
+
+	<!-- 검색 조건문 -->
+	<sql id="criteria">
+		<trim prefix="where (" suffix=")" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'N'.toString()">
+							productName like concat('%',#{keyword},'%')
+						</when>
+						<when test="type == 'C'.toString()">
+							productCategory like concat('%',#{keyword},'%')
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+
+	</sql>
+	<!-- 게시판 등록 -->
+	<insert id="enroll">
+
+		<selectKey resultType="int" keyProperty="productId" order="AFTER">
+  		
+  			SELECT LAST_INSERT_ID()
+  		
+  		</selectKey>
+  		
+		insert into product(productName, productPrice,
+		productCategory)
+		values(#{productName},#{productPrice},#{productCategory})
+
+	</insert>
+
+	<!-- 게시판 목록 -->
+	<select id="getList" resultType="ProductVo">
+
+		select * from product
+
+	</select>
+
+	<!-- 게시판 조회 -->
+	<select id="getPage" resultType="ProductVo">
+
+		select * from product
+		where
+		productId = #{productId}
+
+	</select>
+
+	<!-- 게시판 수정 -->
+	<update id="modify">
+
+		update product set
+		productName =
+		#{productName},
+		productPrice = #{productPrice}, productCategory =
+		#{productCategory}
+		where productId = #{productId}
+
+	</update>
+
+	<!-- 게시판 삭제 -->
+	<delete id="delete">
+
+		delete from product where productId = #{productId}
+
+	</delete>
+
+	<!-- 게시판 목록 (페이징 적용) -->
+	<select id="getListPaging" resultType="ProductVo">
+		select * from (
+		select productId, productName, productPrice,
+		productCategory
+		from product
+		<if test="keyword != null">
+			<include refid="criteria"></include>
+		</if>
+		order by productId desc) as T1
+		limit #{skip},#{amount}
+	</select>
+
+
+	<!-- 게시물 총 갯수 -->
+	<select id="getTotal" resultType="int">
+
+		select count(*) from product
+		<if test="keyword != null">
+			<include refid="criteria"></include>
+		</if>
+	</select>
+
+	<!-- 이미지 등록 -->
+	<insert id="imageEnroll">
+
+		insert into product_image(productId, fileName, uploadPath) values
+		(#{productId}, #{fileName}, #{uploadPath})
+
+	</insert>
+	
+	<!-- 상품 정보 -->
+	<select id="getProductInfo" resultType="com.spring.bread.model.ProductVo">
+	
+			select a.productId, a.productName, a.productPrice, a.productCategory 
+			from PRODUCT a left outer join PRODUCT_IMAGE b on a.productId = b.productId
+			where productId = ${productId}	
+	
+	</select>
+
+	<!-- Member -->
+	<!-- Member -->
+	<!-- Member -->
+
+	<insert id="memberJoin">
+		<![CDATA[
+			insert member(memberId, memberPw, memberName, memberPhone1, memberPhone2, memberPhone3, memberMail, memberAddr1, memberAddr2, memberAddr3) 
+			values(#{memberId}, #{memberPw}, #{memberName}, #{memberPhone1}, #{memberPhone2}, #{memberPhone3}, #{memberMail}, #{memberAddr1}, #{memberAddr2}, #{memberAddr3})
+		]]>
+	</insert>
+
+	<select id="memberList" resultType="MemberVo">
+		<![CDATA[
+			select memberId, memberName from member order by memberId desc
+		]]>
+	</select>
+
+	<select id="memberDetail" parameterType="MemberVo"
+		resultType="MemberVo">
+		<![CDATA[
+			select memberId, memberPw, memberName, memberPhone1, memberPhone2, memberPhone3, memberMail, memberAddr1, memberAddr2, memberAddr3
+			from member where memberId=#{memberId}
+		]]>
+	</select>
+
+	<update id="memberModify">
+ 		<![CDATA[
+			UPDATE MEMBER
+    	    SET 
+        	memberName = #{memberName}, 
+        	memberPhone1 = #{memberPhone1}, memberPhone2 = #{memberPhone2}, memberPhone3 = #{memberPhone3},
+        	memberMail = #{memberMail},
+        	memberAddr1 = #{memberAddr1}, memberAddr2 = #{memberAddr2}, memberAddr3 = #{memberAddr3}
+        	WHERE memberId = #{memberId}
+		]]>
+	</update>
+
+	<select id="memberLogin" parameterType="hashMap"
+		resultType="MemberVo">
+		<![CDATA[
+			select memberId, memberPw, memberName, adminCk from member where memberId=#{memberId} and memberPw=#{memberPw}
+		]]>
+	</select>
+
+	<select id="memberPwCheck" resultType="hashMap">
+		<![CDATA[
+			select memberPw from member where memberId=#{memberId}
+		]]>
+	</select>
+
+	<delete id="memberDelete" parameterType="MemberVo">
+		<![CDATA[
+        	DELETE FROM MEMBER
+        	WHERE memberId = #{memberId} and memberPw = #{memberPw}
+        ]]>
+	</delete>
+
+	<!-- 아이디 중복검사 -->
+	<select id="memberIdCheck" resultType="int">
+		<![CDATA[
+			select count(*) from member where memberId = #{memberId}
+		]]>
+	</select>
+
+	<!-- Cart -->
+	<!-- Cart -->
+	<!-- Cart -->
+
+	<insert id="addCart">
+		insert into cart(memberId, productId, productCount)
+		values(#{memberId}, #{productId}, #{productCount})
+	</insert>
+
+	<select id="getCart" resultType="Map">
+		SELECT
+		vc.cartId
+		, vb.productId
+		,
+		vb.productName
+		, vb.productPrice
+		, vc.productCount
+		, bm.memberName
+		FROM
+		cart
+		vc, member bm, product vb
+		WHERE vc.memberId = bm.memberId
+		AND
+		vc.productId = vb.productId
+		AND vc.memberId = #{memberId}
+		ORDER BY
+		cartId
+	</select>
+ <!-- 댓글등록 -->
+  	<insert id="enrollReply">
+  	
+  		insert into bread_reply(productId, memberId, content, rating) values(#{productId}, #{memberId}, #{content}, #{rating})
+  	
+  	</insert>
+  	<select id="getProductIdName" resultType="com.spring.bread.model.ProductVo">
+	
+		select productId, productName from product 
+		where productId = #{productId}
+	
+	
+	</select>
+
+	<select id="checkReply" resultType="integer">
+	
+		select replyId from bread_reply 
+		where memberId = #{memberId} and productId = #{product}
+	
+	</select>
+	<!-- 댓글 페이징 -->
+  	<select id="getReplyList" resultType="com.spring.bread.model.ReplyVo">
+		  		
+		select replyId, productId, memberId, content, rating, regDate
+		from bread_reply
+		where productId = #{productId}
+		order by regDate desc  		
+  		limit #{skip}, #{amount}
+  		
+  	</select>
+  	
+  	<select id="getReplyTotal" resultType="int">
+  	
+  		select count(*)
+  		from bread_reply
+  		where productId = #{productId}
+  	
+  	</select>
+  	<update id="updateReply">
+  	
+  	update vam_reply set content = #{content}, rating = #{rating}
+  		where replyId = #{replyId}
+  	
+  	</update>
+  	
+  	<select id="getUpdateReply" resultType="com.spring.bread.model.ReplyVo">
+	
+		select * from bread_reply
+		where replyId = #{replyId}
+		
+	</select>
+	
+		<!-- 댓글 삭제 -->
+  	<delete id="deleteReply">
+  	
+  		DELETE FROM bread_reply
+  		WHERE replyId = #{replyId}
+  		
+  	</delete>
+
+</mapper>     

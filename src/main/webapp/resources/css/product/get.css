@@ -1,0 +1,216 @@
+@charset "UTF-8";
+
+.input_wrap_name {
+	padding-top: 30px;
+	text-align: center;
+}
+
+.input_wrap{
+	padding-top: 10px;
+	text-align: center;
+	margin-right: 50px;
+}
+
+.form_section{
+	float:left;
+	padding-top: 10px;
+}
+
+label {
+	display: block;
+	margin: 10px 0;
+	font-size: 20px;
+}
+
+input {
+	padding: 5px;
+	font-size: 17px;
+}
+
+textarea {
+	width: 800px;
+	height: 200px;
+	font-size: 15px;
+	padding: 10px;
+}
+
+.btn {
+	display: inline-block;
+	font-size: 20px;
+	padding: 3px 6px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	font-weight: 600;
+	width: 120px;
+	height: 41px;
+	line-height: 39px;
+	text-align: center;
+	margin-left: 30px;
+	cursor: pointer;
+}
+
+.btn_wrap {
+	padding-left: 80px;
+	margin-top: 30px;
+	margin-left: 100px;
+	text-align: center;
+}
+
+#result_card img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	padding: 5px;
+	margin-top: 10px;
+	margin: auto;
+}
+
+*{
+	font-family: 'Jua', sans-serif;
+font-family: 'Nanum Myeongjo', serif;
+font-family: 'Poor Story', cursive;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* 화면 전체 렙 */
+.wrapper{
+	width: 100%;
+}
+/* content 랩 */
+.wrap{
+	width : 800px;
+	margin: auto;
+}
+/* 홈페이지 기능 네비 */ 
+.top_gnb_area{
+	width: 100%;
+    height: 50px;
+    background-color: #f0f0f1;
+    position:relative;
+}
+.top_gnb_area .list{
+    position: absolute;
+    top: 0px;
+    right: 0;
+}
+.top_gnb_area .list li{
+    list-style: none;    
+    float : left;
+    padding: 13px 15px 0 10px;
+    font-weight: 900;
+    cursor: pointer;
+}
+ 
+/* 로고, 검색, 로그인 */
+.top_area{
+	width: 90%;
+    height: 140px;
+    /* background-color: #f7f0b9; */
+}
+/* 로고 영역 */
+.logo_area{
+    width: 25%;
+    height: 100%;
+    float:left;
+    padding-bottom: 30px;
+}
+.logo_area img{
+    width: 100%;
+    height: 100%;
+}
+/* 검색 박스 영역 */
+.search_area{
+	width: 50%;
+	height: 100%;
+	float:left;	
+}
+.search_wrap{
+	width: 100%;
+    height: 100%;
+}
+#searchForm{
+	width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search_input{
+    display: flex;
+    height: 30%;
+    width: 80%;	
+}
+.search_input select{
+	width: 35%;
+    text-align: center;
+    font-size: 12px;	
+}
+.search_input input{
+    margin-left: 10px;
+    width: 40%;	
+    font-size: 18px;
+    padding-left: 2%;
+}
+.search_btn{
+	margin-left: 10px;
+    width: 15%;
+    border-radius: 14px;
+    font-size: 17px;
+    font-weight: 600;	
+}
+.search_btn img{
+	height: 50%;
+	width: 50%;
+}
+.input_wrap{
+	margin-left: 280px;
+}
+
+/* 로그인 버튼 영역 */
+.login_area{
+	width: 25%;
+	height: 100%;
+	display: inline-block;	
+	text-align: center;		
+}
+.login_button{
+	height: 50%;
+    background-color: #D4DFE6;
+    margin-top: 30px;
+    line-height: 77px;
+    font-size: 40px;
+    font-weight: 900;
+    border-radius: 10px;
+    cursor: pointer;	
+}
+.login_area>span{
+	margin-top: 15px;
+    font-weight: 500;
+    font-size: 25px;
+    display: inline-block;
+    
+}
+.login_button{
+	height : 50%;
+	background-color: #D4DFE6;
+	margin-top:30px;
+}
+
+
+/* 홈페이지 메인 제품 목록  */
+.content_area{
+	width: 100%;
+    background-color: #97ef97;
+    min-height: 1000px;
+}
+
+/* float 속성 해제 */
+.clearfix{
+	clear: both;
+}
+
+

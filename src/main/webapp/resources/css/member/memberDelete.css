@@ -1,0 +1,159 @@
+@charset "UTF-8";
+*{
+		font-family: 'Jua', sans-serif;
+font-family: 'Nanum Myeongjo', serif;
+font-family: 'Poor Story', cursive;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* 화면 전체 렙 */
+.wrapper{
+	width: 100%;	
+}
+
+/* content 랩 */
+.wrap{
+	width : 800px;
+	margin: auto;
+}
+
+/* 홈페이지 기능 네비 */ 
+.top_gnb_area{
+	width: 100%;
+    height: 50px;
+    background-color: #f0f0f1;
+    position:relative;
+}
+.top_gnb_area .list{
+    position: absolute;
+    top: 0px;
+    right: 0;
+}
+.top_gnb_area .list li{
+    list-style: none;    
+    float : left;
+    padding: 13px 15px 0 10px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+/* 페이지 제목 */
+.subject{
+	width: 100%;
+    height: 120px;
+    background-color: #8EC0E4;
+	text-align: right;
+	position: relative;
+}
+
+/* 로고 영역 */
+.logo_area{
+    width: auto;
+    height: 100%;
+    position: absolute;
+    float:left;
+    margin-left: 20px;
+}
+.logo_area img{
+    width: 100%;
+    height: 100%;
+}
+
+.subject_name{
+	width: 100%;
+	text-align: right;
+	position: absolute;
+	bottom: 0px;
+}
+.subject_name span{
+    font-size: 60px;
+    font-weight: 900;
+    color: white;
+    margin-right: 50px;
+}
+.subject_name a{
+	text-decoration: none;
+}
+
+
+/* 로그인 area */
+.id_wrap{
+	margin-top: 40px;
+}
+.id_name{
+	font-size: 25px;
+    font-weight: bold;
+    padding: 10px 14px;
+    color: #606060;
+}
+.id_input_box{
+	border: 1px solid #606060;
+	height:31px;
+	padding: 10px 14px;	
+	display: block;
+	width : 80%;
+	margin : auto;	
+}
+.id_input{
+	width:100%;
+	height:100%;
+	border:none;
+	font-size:28px;
+	color: #606060;
+}
+
+.pw_wrap{
+	margin-top: 40px;
+}
+.pw_name{
+	font-size: 25px;
+    font-weight: bold;
+    padding: 10px 14px;
+    color: #606060;
+}
+.pw_input_box{
+	border: 1px solid #606060;
+	height:31px;
+	padding: 10px 14px;	
+	display: block;
+	width : 80%;
+	margin : auto;	
+}
+.pw_input{
+	width:100%;
+	height:100%;
+	border:none;
+	font-size:28px;
+}
+
+/* 탈퇴 실패시 경고글 */
+.delete_warn{
+    margin-top: 30px;
+    text-align: center;
+    color : red;
+}
+
+
+.delete_button_wrap{
+	margin-top: 40px;
+	text-align: center;
+}
+.delete_button{
+	border: 1px solid #606060;
+	width: 25%;
+    height: 40px;
+    background-color: #6AAFE6;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    margin: auto;
+}
+
+/* float 속성 해제 */
+.clearfix{
+	clear: both;
+}
